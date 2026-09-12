@@ -15,5 +15,6 @@ fun main(){
     println(Hello(firstname,lastname));
 }
 fun Hello(firstname:String,lastname:String,age:Int=67):String {
-    return "Witaj: "+firstname+" "+lastname+ " wiek: "+age
+    //return "Witaj: "+firstname+" "+lastname+ " wiek: "+age
+    return "Witaj: $firstname $lastname+  wiek: $age"
 }
