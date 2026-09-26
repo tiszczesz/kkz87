@@ -2,14 +2,42 @@
 {
     int[] nazwa = new int[20]; //zdefiniowanie 20 elem tablicy liczb  całkowitych
     Random rnd = new Random(); //generator liczb losowych 
-    for(int i=0; i < nazwa.Length; i++)
+    for (int i = 0; i < nazwa.Length; i++)
     {
         nazwa[i] = rnd.Next(100);
     }
 
-    foreach(int elem in nazwa)
+    foreach (int elem in nazwa)
     {
-        Console.Write(elem+ " ");
+        Console.Write(elem + " ");
     }
-}  
-Ex1();
+}
+//Ex1();
+void Ex2()
+{
+    //tablice 2-wymiarowe
+    string?[,] zdania = new string[2, 3];
+    for (int i = 0; i < zdania.GetLength(0); i++)
+    {
+        for (int j = 0; j < zdania.GetLength(1); j++)
+        {
+            Console.Write($"podaj tekst dla [{i},{j}]: ");
+            zdania[i, j] = Console.ReadLine();
+        }
+
+    }
+    for (int i = 0; i < zdania.GetLength(0); i++)
+    {
+        for (int j = 0; j < zdania.GetLength(1); j++)
+        {
+            Console.Write(zdania[i,j]+" ");            
+        }
+        Console.WriteLine();
+
+    }
+    // foreach (string? elem in zdania)
+    // {
+    //     Console.Write(elem + " ");
+    // }
+}
+Ex2();
