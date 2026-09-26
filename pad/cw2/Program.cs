@@ -30,7 +30,7 @@ void Ex2()
     {
         for (int j = 0; j < zdania.GetLength(1); j++)
         {
-            Console.Write(zdania[i,j]+" ");            
+            Console.Write(zdania[i, j] + " ");
         }
         Console.WriteLine();
 
@@ -40,8 +40,9 @@ void Ex2()
     //     Console.Write(elem + " ");
     // }
 }
-Ex2();
-void Ex3(){
+//Ex2();
+void Ex3()
+{
     //tablica tablic
     int[][] tab = new int[4][]; // 4-elementowa tablica tablic liczb calkowitych
     tab[0] = new int[10];
@@ -49,9 +50,9 @@ void Ex3(){
     tab[2] = new int[5];
     tab[3] = new int[100];
     Random rnd = new Random();
-    for(int i=0; i < tab.Length; i++)
+    for (int i = 0; i < tab.Length; i++)
     {
-        for(int j=0; j < tab[i].Length; j++)
+        for (int j = 0; j < tab[i].Length; j++)
         {
             tab[i][j] = rnd.Next(100);
         }
@@ -61,7 +62,7 @@ void Ex3(){
     {
         foreach (var elem in item)
         {
-            Console.Write(elem+" ");
+            Console.Write(elem + " ");
         }
         Console.WriteLine();
     }
