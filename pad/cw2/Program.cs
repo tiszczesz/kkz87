@@ -41,3 +41,29 @@ void Ex2()
     // }
 }
 Ex2();
+void Ex3(){
+    //tablica tablic
+    int[][] tab = new int[4][]; // 4-elementowa tablica tablic liczb calkowitych
+    tab[0] = new int[10];
+    tab[1] = new int[20];
+    tab[2] = new int[5];
+    tab[3] = new int[100];
+    Random rnd = new Random();
+    for(int i=0; i < tab.Length; i++)
+    {
+        for(int j=0; j < tab[i].Length; j++)
+        {
+            tab[i][j] = rnd.Next(100);
+        }
+    }
+    //wyswietlanie
+    foreach (var item in tab)
+    {
+        foreach (var elem in item)
+        {
+            Console.Write(elem+" ");
+        }
+        Console.WriteLine();
+    }
+}
+Ex3();
