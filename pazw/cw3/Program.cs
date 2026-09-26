@@ -1,6 +1,7 @@
 ﻿const string filename = "dane.txt";
 string[] GetFromFile(string filename)
 {
+    //File.WriteAllLines()
     return File.ReadAllLines(filename);
 }
 int GetWordsFromStrings(string[] lines)
