@@ -1,4 +1,6 @@
-﻿const string filename = "dane.txt";
+﻿using System.Reflection.Metadata;
+
+const string filename = "dane.txt";
 string[] GetFromFile(string filename)
 {
     //File.WriteAllLines()
@@ -6,13 +8,17 @@ string[] GetFromFile(string filename)
 }
 int GetWordsFromStrings(string[] lines)
 {
-    int wordsCount = 0;
-    foreach (var line in lines)
-    {
-        wordsCount += line.Split(" ").Length;
-    }
-    //explode w php, ... w js
-    return wordsCount;
+    //document.querySelector("#ala").addEvenListener("click",()=>{alert("jjjj")});
+    // int wordsCount = 0;
+    // foreach (var line in lines)
+    // {
+    //     wordsCount += line.Split(" ", StringSplitOptions.RemoveEmptyEntries).Length;
+    // }
+    // //explode w php, ... w js
+    // return wordsCount;
+
+    //lepsza wersja z Linq i powtarzaniem spacji
+    return lines.Sum(line => line.Split(" ", StringSplitOptions.RemoveEmptyEntries).Length);
 }
 int GetCharsFromStrings(string[] lines)
 {
