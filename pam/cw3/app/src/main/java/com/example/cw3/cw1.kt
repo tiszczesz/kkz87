@@ -2,7 +2,7 @@ package com.example.cw3
 
 fun main(){
     print("Podaj rozmiar tablicy: ")
-    val size = readln().toInt()
+    val size =     readln().toInt()
     val array = generateTab2(size)
     showArray2(array)
 }
