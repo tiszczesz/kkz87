@@ -1,11 +1,11 @@
 package com.example.cw3
 
 fun main(){
-    val p1: Person = Person("Jan", "Kowalski", 30)
-    val p2: Person = Person("Anna", "Nowak", 25)
-    val p3: Person = Person("Roman", "Gryk", 19)
-    val p4: Person = Person("Teresa", "Małecka", 25)
-    val p10: Person = Person("Marek", "Nowak", 40)
+    val p1: Person = Person("Jan", "Kowalski", 30);
+    val p2: Person = Person("Anna", "Nowak", 25);
+    val p3: Person = Person("Roman", "Gryk", 19);
+    val p4: Person = Person("Teresa", "Małecka", 25);
+    val p10: Person = Person("Marek", "Nowak", 40);
     println(p1)
     println(p2)
     val people = listOf(p1, p2, p3, p4) //lista osób tylko do odczytu
