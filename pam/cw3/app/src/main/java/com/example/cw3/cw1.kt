@@ -7,6 +7,8 @@ fun main(){
     val size =     readln().toInt()
     val array = generateTab2(size)
     showArray2(array)
+    println("Najmniejszy element: ${getMin(array)}")
+    println("Największy element: ${getMax(array)}")
 }
 
 fun generateTab(size: Int): IntArray{
@@ -35,8 +37,18 @@ fun showArray2(array: Array<Int>){
     println()
 }
 fun getMin(arr: Array<Int>):Int{
-    return 0;
+//    var min = arr[0]
+//    for (i in arr.indices){
+//        if (arr[i] < min) min = arr[i]
+//    }
+//    return min;
+    return arr.minOrNull() ?: 0
 }
 fun getMax(arr: Array<Int>):Int{
-    return 0;
+//    var max = arr[0]
+//    for (i in arr.indices){
+//        if (arr[i] > max) max = arr[i]
+//    }
+//    return max;
+    return arr.maxOrNull() ?: 0
 }
