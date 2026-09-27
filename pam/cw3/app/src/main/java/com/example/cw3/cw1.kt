@@ -9,6 +9,8 @@ fun main(){
     showArray2(array)
     println("Najmniejszy element: ${getMin(array)}")
     println("Największy element: ${getMax(array)}")
+    println(" -----------------------------")
+    stringArray()
 }
 
 fun generateTab(size: Int): IntArray{
@@ -42,6 +44,7 @@ fun getMin(arr: Array<Int>):Int{
 //        if (arr[i] < min) min = arr[i]
 //    }
 //    return min;
+
     return arr.minOrNull() ?: 0
 }
 fun getMax(arr: Array<Int>):Int{
@@ -51,4 +54,17 @@ fun getMax(arr: Array<Int>):Int{
 //    }
 //    return max;
     return arr.maxOrNull() ?: 0
+}
+fun stringArray(){
+    val array = arrayOf("Ala", "ma", "kota")
+    val tab = arrayOfNulls<String>(5)
+    val tab2 = Array<String?>(10){"puste"}
+    for (s in array){
+        print("$s ")
+    }
+
+    println()
+    print("Tablica tab: ${tab.joinToString()}")
+    println()
+    print("Tablica tab2: ${tab2.joinToString()}")
 }
