@@ -1,6 +1,6 @@
 package com.example.cw3
 
-data class Game(val name: String, val genre: String, val year: Int, val price: Double)
+data class Game(var name: String, val genre: String, val year: Int, val price: Double)
 
 fun main() {
     val sampleGames = mutableListOf<Game>(
@@ -15,6 +15,7 @@ fun main() {
         Game("Mała Wielka Maszyna", "Konstrukcyjna", 2023, 34.99),
         Game("Biblioteka Snów", "Narracyjna", 2024, 64.99)
     )
+    sampleGames[0].name = "sasassasasas"
     println("Gry przed posortowaniem:")
     for (game in sampleGames) {
         println("${game.name} - ${game.genre} - ${game.year} - ${game.price}")
