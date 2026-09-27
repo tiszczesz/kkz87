@@ -1,5 +1,7 @@
 package com.example.cw3
 
+import kotlin.random.Random
+
 fun main(){
     print("Podaj rozmiar tablicy: ")
     val size =     readln().toInt()
@@ -9,10 +11,16 @@ fun main(){
 
 fun generateTab(size: Int): IntArray{
     val array = IntArray(size)
+    for (i in array.indices){
+        array[i] = Random.nextInt(0, 100)
+    }
     return array
 }
 fun generateTab2(size:Int): Array<Int>{
     val array = Array(size){0}
+    for (i in array.indices){
+        array[i] = Random.nextInt(0, 100)
+    }
     return array}
 fun showArray(array: IntArray){
     for (i in array){
@@ -25,4 +33,10 @@ fun showArray2(array: Array<Int>){
         print("$i ")
     }
     println()
+}
+fun getMin(arr: Array<Int>):Int{
+    return 0;
+}
+fun getMax(arr: Array<Int>):Int{
+    return 0;
 }
