@@ -2,7 +2,7 @@ package com.example.cw3
 
 data class Game(val name: String, val genre: String, val year: Int, val price: Double)
 
-val sampleGames = listOf(
+val sampleGames = mutableListOf<Game>(
     Game("Echo Labiryntu", "Przygodowa", 2021, 59.99),
     Game("Kosmiczny Kurier", "Zręcznościowa", 2022, 39.99),
     Game("Ostatni Ogrodnik", "Symulacja", 2023, 49.99),
