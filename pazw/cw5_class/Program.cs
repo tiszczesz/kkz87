@@ -10,3 +10,7 @@ Console.WriteLine(s1.ToString());
 Console.WriteLine(s2);
 // Console.WriteLine(s1.GetHashCode());
 // Console.WriteLine(s1.GetType());
+var b1 = new Book();
+var b2 = new Book("1984","nie wiem",200.99M);
+Console.WriteLine(b1);
+Console.WriteLine(b2);
