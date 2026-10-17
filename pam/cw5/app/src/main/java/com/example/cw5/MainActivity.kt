@@ -1,5 +1,7 @@
 package com.example.cw5
 
+import android.content.res.ColorStateList
+import android.graphics.Color
 import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
@@ -22,10 +24,19 @@ class MainActivity : AppCompatActivity() {
         // w kodzie i przypisać im odpowiednie akcje
         val btn1 = findViewById<Button>(R.id.btn1)
         val tv1 = findViewById<TextView>(R.id.txt1)
+        val btnHH = findViewById<Button>(R.id.HH)
 
         //tv1.text = "po zmianie władzy"
         btn1.setOnClickListener {
             tv1.text = "ala ma kota";
+        }
+        btnHH.setOnClickListener {
+            btnHH.backgroundTintList =
+                if(btnHH.backgroundTintList == ColorStateList.valueOf(Color.RED))
+                    ColorStateList.valueOf(Color.GREEN)
+                else  ColorStateList.valueOf(Color.RED)
+           // btnHH.setBackgroundColor(Color.parseColor("#FF0000"))
+            //btnHH.background =
         }
     }
 }
