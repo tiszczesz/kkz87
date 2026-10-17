@@ -1,10 +1,7 @@
 ﻿using cw3.Models;
 
 FileRepo repo = new FileRepo();
-foreach(var c in repo.Contacts)
-{
-    Console.WriteLine(c);
-}
+repo.ShowAllContacts();
 Contact newContact = new Contact
 {
     Firstname = "nowy",
@@ -12,4 +9,5 @@ Contact newContact = new Contact
     Age = 22,
     Email = "vvv@bbb.bb"
 };
-repo.Contacts.Add(newContact);
+//repo.AddContact(newContact);
+repo.DeleteByName("nowy");
