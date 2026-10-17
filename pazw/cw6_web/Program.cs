@@ -1,4 +1,5 @@
 using cw6_wb.Models;
+using cw6_web.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 var app = builder.Build();
@@ -20,6 +21,17 @@ app.MapGet("/", () =>
 app.MapGet("/contacts", () =>
 {
     return contacts;
+});
+app.MapGet("/address", () =>
+{
+   var a = new Address
+   {
+       Street = "asasasdasd",
+       City = "HHhhhh",
+       Country = "GGGGG",
+       Number = 45
+   };
+   return a; 
 });
 
 app.Run();
