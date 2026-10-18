@@ -7,12 +7,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="~/styles.css">
     <title>Document</title>
 </head>
 <body>
     <h1>Kolory</h1>
   @* tu ma byc select z kolorami *@
   <!-- tu ma byc select z kolorami -->
+  <select name="colors" id="colors">
+        @foreach(var col in Model.Colors)
+            {
+                <option value='@col.AngColor'>@col.PolColor</option>
+            }
+        </select>
     <section id="scene" ></section>
+    <script src="~/colors.js" defer></script>
 </body>
 </html>
