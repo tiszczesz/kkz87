@@ -18,13 +18,13 @@ public class FileRepo
             if (contact != null) _contacts.Add(contact);
         }
     }
-    public void ShowAllContacts()
-    {
-        foreach (var c in _contacts)
-        {
-            Console.WriteLine(c);
-        }
-    }
+    // public void ShowAllContacts()
+    // {
+    //     foreach (var c in _contacts)
+    //     {
+    //         Console.WriteLine(c);
+    //     }
+    // }
 
     public void AddContact(Contact newContact)
     {
@@ -47,5 +47,9 @@ public class FileRepo
         _contacts.RemoveAll((c) => c.Firstname.ToLower() == v.ToLower()
         || c.Lastname.ToLower() == v.ToLower());
         SaveToFile();
+    }
+    public List<Contact> GetAll()
+    {
+        return _contacts;
     }
 }
