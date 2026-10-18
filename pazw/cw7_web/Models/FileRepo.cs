@@ -52,4 +52,19 @@ public class FileRepo
     {
         return _contacts;
     }
+    public static List<MyColor> GetColors()
+    {
+        var lines = File.ReadAllLines("colors.txt");
+        var colors = new List<MyColor>();
+        foreach(var line in lines)
+        {
+            var data = line.Split('|');
+            colors.Add(new MyColor
+            {
+                AngColor = data[0].Trim(),
+                PolColor = data[1].Trim()
+            });
+        }
+        return colors;
+    }
 }
