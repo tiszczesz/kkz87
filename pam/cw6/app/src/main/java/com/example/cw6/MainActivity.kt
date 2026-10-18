@@ -12,6 +12,7 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 
 class MainActivity : AppCompatActivity() {
+    var counter = 0
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -28,6 +29,9 @@ class MainActivity : AppCompatActivity() {
             Toast.makeText(this@MainActivity,"MIAUUUU",
                 Toast.LENGTH_SHORT).show()
            // Toast.makeText(this,"ddddddd",Toast.LENGTH_LONG).show()
+        }
+        btn1.setOnClickListener {
+            tv1.text = "Liczba polubień: ${++counter}"
         }
     }
 }
