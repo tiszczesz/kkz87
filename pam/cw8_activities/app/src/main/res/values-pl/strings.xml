@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">2 Aktywmności</string>
+    <string name="ActivityFirst">Aktywność główna</string>
+    <string name="ActivitySecond">Aktywność druga</string>
+    <string name="BtnActivityFirst">Aktywność druga</string>
+    <string name="btnFirst">Do drugiej aktywności</string>
+</resources>

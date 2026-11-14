@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">cw8_activities</string>
+    <string name="ActivityFirst">Main Activity</string>
+    <string name="ActivitySecond">Second Activity</string>
+    <string name="btnFirst">Go To SecondActivity</string>
+
+
+</resources>

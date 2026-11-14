@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#346789"
+    tools:context=".SecondActivity">
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Druga aktywność"
+        android:textAlignment="center"
+        android:textColor="#CDDC39"
+        android:textSize="34sp"
+        />
+
+    <Button
+        android:id="@+id/btnGoToFirst"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Wróć do pierwszej aktywności" />
+</LinearLayout>
