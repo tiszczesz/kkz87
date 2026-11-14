@@ -35,5 +35,11 @@ namespace cw2_wpf
             secondWindow.ShowDialog();
             //secondWindow.Show();
         }
+
+        private void btnShowTime(object sender, RoutedEventArgs e)
+        {
+            var otherWindow = new OtherWindow();
+            otherWindow.ShowDialog();
+        }
     }
 }
