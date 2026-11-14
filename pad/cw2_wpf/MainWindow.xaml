@@ -19,5 +19,6 @@
           Height="50" Click="BtnShowSecondWindow_Click" />
         <Button x:Name="BtnShowOtherWindow" Grid.Row="2" Content="Pokaż nowe okno z czasem"
   Height="50" Click="btnShowTime"  />
+        <Image HorizontalAlignment="Left" Height="234" Margin="84,22,0,0" Grid.Row="3" VerticalAlignment="Top" Width="361" Source="/obraz.jpg" Stretch="Fill"/>
     </Grid>
 </Window>
