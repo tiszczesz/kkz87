@@ -1,0 +1,13 @@
+h1 {
+  text-align: center;
+  border-bottom: 1px solid blue;
+}
+#time {
+  margin: 20px;
+  padding: 20px;
+  background-color: aqua;
+  color: blue;
+  border: darkblue solid 1px;
+  display: none;
+  min-width: 200px;
+}
