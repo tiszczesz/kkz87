@@ -5,6 +5,7 @@
 - Wpisz polecenie, aby utworzyć nowy projekt konsolowy:
   ```bash
   dotnet new console -n NazwaProjektu
+  dotnet new web -o NazwaProjektu
   ```
 - Przejdź do utworzonego katalogu projektu:
   ```bash
