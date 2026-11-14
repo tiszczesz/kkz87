@@ -14,4 +14,14 @@ class ExampleUnitTest {
     fun addition_isCorrect() {
         assertEquals(4, 2 + 2)
     }
+    @Test
+    fun prime_isCorrect() {
+        assertTrue(IsPrime(2))
+        assertTrue(IsPrime(3))
+        assertFalse(IsPrime(4))
+        assertTrue(IsPrime(5))
+        assertFalse(IsPrime(6))
+        assertFalse(IsPrime(21))
+        assertTrue(IsPrime(31))
+    }
 }
