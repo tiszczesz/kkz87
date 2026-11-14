@@ -7,4 +7,8 @@ app.UseStaticFiles();
 // app.MapGet("/", () => "Hello World!");
 //app.MapRazorPages();
 app.MapDefaultControllerRoute();
+// app.MapControllerRoute(
+//     name: "default",
+//     pattern: "{controller=School}/{action=List}/{id?}"
+// );
 app.Run();
