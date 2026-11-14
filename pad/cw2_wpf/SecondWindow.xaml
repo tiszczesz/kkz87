@@ -8,8 +8,8 @@
         
         Title="SecondWindow" Height="300" Width="400" ResizeMode="NoResize" WindowStyle="ToolWindow">
     <StackPanel Orientation="Vertical">
-        <Button>Pokaż datę</Button>
-        <Label x:Name="LblDate" Content="Data" Height="100" 
+        <Button Click="BtnShowDate">Pokaż datę</Button>
+        <Label x:Name="LblDate"  Height="100" 
                VerticalContentAlignment="Center"
                HorizontalContentAlignment="Center"
                FontSize="30"/>

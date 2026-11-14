@@ -26,5 +26,10 @@ namespace cw2_wpf
         {
             Close();
         }
+
+        private void BtnShowDate(object sender, RoutedEventArgs e)
+        {
+            LblDate.Content = DateTime.Now.ToShortDateString();
+        }
     }
 }

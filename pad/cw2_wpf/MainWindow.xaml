@@ -10,11 +10,14 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
-            <RowDefinition Height="21*"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="118*"/>
         </Grid.RowDefinitions>
         <Button x:Name="BtnNewWindow" Grid.Row="0" Content="Click me"
                 Height="50" Click="ShowNewWindow"/>
         <Button x:Name="BtnShowSecondWindow" Grid.Row="1" Content="Pokaż nowe okno"
           Height="50" Click="BtnShowSecondWindow_Click" />
+        <Button x:Name="BtnShowOtherWindow" Grid.Row="2" Content="Pokaż nowe okno z czasem"
+  Height="50" Click="BtnShowSecondWindow_Click" />
     </Grid>
 </Window>
