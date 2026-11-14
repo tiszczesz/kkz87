@@ -26,5 +26,14 @@ namespace cw2_wpf
             //statyczna metoda wyświetlająca okienko
             MessageBox.Show("To jest okienko jak alert w JS");
         }
+
+        private void BtnShowSecondWindow_Click(object sender, RoutedEventArgs e)
+        {
+            //tworzymy instancję drugiego okna
+            var secondWindow = new SecondWindow();
+            //pokazujemy okno
+            secondWindow.ShowDialog();
+            //secondWindow.Show();
+        }
     }
 }
