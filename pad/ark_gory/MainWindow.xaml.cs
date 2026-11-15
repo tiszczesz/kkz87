@@ -16,7 +16,7 @@ namespace ark_gory
     /// </summary>
     public partial class MainWindow : Window
     {
-        private uint _currentValue = 0;
+        private int _currentValue = 0;
         public MainWindow()
         {
             InitializeComponent();
@@ -33,6 +33,16 @@ namespace ark_gory
         {
             countLikes.Text =
                $"{_currentValue} polubień";
+        }
+
+        private void BtnResetLikes(object sender, RoutedEventArgs e)
+        {
+            _currentValue--;
+            if (_currentValue < 0)
+            {
+                _currentValue = 0;
+            }
+            UpdateLikesText();
         }
     }
 }

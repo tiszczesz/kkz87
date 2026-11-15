@@ -32,7 +32,7 @@
             <Button 
                 Background="#008080" 
                 Foreground="White"
-                Grid.Column="1" >USUŃ
+                Grid.Column="1" Click="BtnResetLikes" >USUŃ
             </Button>
             <Button 
                 Background="#008080" 
