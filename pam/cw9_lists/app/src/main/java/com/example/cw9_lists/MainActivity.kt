@@ -5,6 +5,7 @@ import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.EditText
 import android.widget.ListView
+import android.widget.Toast
 
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -30,6 +31,15 @@ class MainActivity : AppCompatActivity() {
                  android.R.layout.simple_expandable_list_item_1,
                    contacts)
         lvContacts.adapter = adapter
-
+        btnAdd.setOnClickListener {
+            val contact = tvAddContact.text.toString().trim()
+            if(contact.length==0){
+                Toast.makeText(this, "Nie podano kontaktu",
+                    Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
+            contacts.add(contact)
+            adapter.notifyDataSetChanged()
+        }
     }
 }
