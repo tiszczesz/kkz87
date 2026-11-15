@@ -16,9 +16,23 @@ namespace ark_gory
     /// </summary>
     public partial class MainWindow : Window
     {
+        private uint _currentValue = 0;
         public MainWindow()
         {
             InitializeComponent();
+            UpdateLikesText();
+        }
+
+        private void btnAddLikes(object sender, RoutedEventArgs e)
+        {
+            _currentValue++;
+            UpdateLikesText();
+
+        }
+        private void UpdateLikesText()
+        {
+            countLikes.Text =
+               $"{_currentValue} polubień";
         }
     }
 }

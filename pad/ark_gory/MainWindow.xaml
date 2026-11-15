@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ark_gory"
         mc:Ignorable="d"
-        Title="MainWindow" Height="600" Width="350">
+        Title="Wyjazd w góry" Height="600" Width="350">
     <StackPanel Orientation="Vertical" Margin="0,20,0,0">
         <TextBlock FontSize="32" Foreground="DarkGray">
             Domek w górach
@@ -27,7 +27,7 @@
             <Button
                 Background="#008080"
                 Foreground="White"
-                Grid.Column="0" Content="POLUB"/>
+                Grid.Column="0" Content="POLUB" Click="btnAddLikes"/>
 
             <Button 
                 Background="#008080" 
@@ -40,9 +40,9 @@
                 Grid.Column="2" >ZAPISZ
             </Button>
         </Grid>
-        <TextBlock 
+        <TextBlock x:Name="countLikes" 
             FontSize="16" Foreground="DarkGray"
-            TextAlignment="Right">0 polubień</TextBlock>
+            TextAlignment="Right"></TextBlock>
         <Separator Margin="0,10" Background="Gray" Height="1" />
         <TextBlock FontWeight="Bold" FontSize="16" Foreground="DarkGray"
             TextAlignment="Left">Opis</TextBlock>
