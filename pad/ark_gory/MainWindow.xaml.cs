@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using ark_gory.Models;
+using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -16,11 +17,12 @@ namespace ark_gory
     /// </summary>
     public partial class MainWindow : Window
     {
-        private int _currentValue = 0;
+        private int _currentValue = FileRepo.LoadLikes();
         public MainWindow()
         {
             InitializeComponent();
             UpdateLikesText();
+            //MessageBox.Show(AppContext.BaseDirectory);
         }
 
         private void btnAddLikes(object sender, RoutedEventArgs e)
@@ -43,6 +45,11 @@ namespace ark_gory
                 _currentValue = 0;
             }
             UpdateLikesText();
+        }
+
+        private void BtnSaveLikes(object sender, RoutedEventArgs e)
+        {
+            FileRepo.SaveLikes(_currentValue);
         }
     }
 }

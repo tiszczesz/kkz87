@@ -37,7 +37,7 @@
             <Button 
                 Background="#008080" 
                 Foreground="White"
-                Grid.Column="2" >ZAPISZ
+                Grid.Column="2" Click="BtnSaveLikes" >ZAPISZ
             </Button>
         </Grid>
         <TextBlock x:Name="countLikes" 

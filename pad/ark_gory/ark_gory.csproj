@@ -16,4 +16,10 @@
     <Resource Include="obraz.jpg" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="counter.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>

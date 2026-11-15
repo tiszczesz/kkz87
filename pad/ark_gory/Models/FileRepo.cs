@@ -9,6 +9,7 @@ namespace ark_gory.Models
     {
         public static int LoadLikes(string filePath="counter.txt")
         {
+            
             var content = File.ReadAllText(filePath).Trim();
             return Convert.ToInt32(content);
         }
