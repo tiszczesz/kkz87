@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ark_gory"
+        ResizeMode="NoResize"
         mc:Ignorable="d"
         Title="Wyjazd w góry" Height="600" Width="350">
     <StackPanel Orientation="Vertical" Margin="0,20,0,0">
