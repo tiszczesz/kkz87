@@ -11,7 +11,7 @@
             Domek w górach
         </TextBlock>
         <Image Height="Auto" Width="Auto" Source="/obraz.jpg"/>
-       <!-- 
+        <!-- 
         <StackPanel Orientation="Horizontal">
             <Button Width="117">POLUB</Button>
             <Button Width="117">USUŃ</Button>
@@ -27,8 +27,8 @@
             <Button
                 Background="#008080"
                 Foreground="White"
-                Grid.Column="0" >POLUB
-            </Button>
+                Grid.Column="0" Content="POLUB"/>
+
             <Button 
                 Background="#008080" 
                 Foreground="White"
@@ -40,5 +40,15 @@
                 Grid.Column="2" >ZAPISZ
             </Button>
         </Grid>
+        <TextBlock 
+            FontSize="16" Foreground="DarkGray"
+            TextAlignment="Right">0 polubień</TextBlock>
+        <Separator Margin="0,10" Background="Gray" Height="1" />
+        <TextBlock FontWeight="Bold" FontSize="16" Foreground="DarkGray"
+            TextAlignment="Left">Opis</TextBlock>
+        <TextBlock FontSize="16" Foreground="DarkGray"                   
+                TextAlignment="Left" TextWrapping="Wrap">
+            Odwiedź komfortowy domek w Sudetach, blisko do szlaków turystycznych
+        </TextBlock>
     </StackPanel>
 </Window>
