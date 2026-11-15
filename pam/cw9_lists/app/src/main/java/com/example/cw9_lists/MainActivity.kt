@@ -57,16 +57,17 @@ class MainActivity : AppCompatActivity() {
 //                adapter.notifyDataSetChanged()
 //                true
 //            }
-        lvContacts.setOnItemLongClickListener { parent, view, position, id ->
+        lvContacts.setOnItemClickListener { parent, view, position, id ->
             // Pobierz kliknięty element z adaptera (opcjonalnie)
             val selectedItem = parent.getItemAtPosition(position)
 
             // Wykonaj akcję po długim przytrzymaniu
             Toast.makeText(this, "Przytrzymano pozycję: $position", Toast.LENGTH_SHORT).show()
-
+            contacts.remove(contacts[position])
+            adapter.notifyDataSetChanged()
             // Zwróć true, aby zablokować wywołanie zwykłego kliknięcia (OnItemClickListener)
-            true
-        }
 
+        }
+       // update kontaktu na długie kliknięcie itemu w liście
     }
 }
