@@ -1,6 +1,6 @@
 # RecyclerView: lista zadań Todo w Kotlinie
 
-W tym przykładzie utworzymy przewijaną listę zadań w `Activity` przy użyciu klasycznych widoków Androida (XML), bez Jetpack Compose. Każde zadanie ma identyfikator, treść, informację o wykonaniu i datę realizacji. Zaznaczenie pola zmieni stan zadania w pamięci.
+W tym przykładzie utworzymy przewijaną listę zadań w `Activity` przy użyciu klasycznych widoków Androida (XML), bez Jetpack Compose. Każde zadanie ma identyfikator, treść, informację o wykonaniu i datę realizacji. Zadania można dodawać, edytować i usuwać, a także zmieniać ich stan wykonania. Wszystkie zmiany są przechowywane tylko w pamięci.
 
 ## 1. Utwórz projekt
 
@@ -44,6 +44,17 @@ W istniejącym pliku `app/src/main/res/values/strings.xml` dodaj poniższe eleme
 ```xml
 <string name="todo_date">Data realizacji: %1$s</string>
 <string name="todo_done">Wykonane</string>
+<string name="todo_add">Dodaj zadanie</string>
+<string name="todo_edit">Edytuj zadanie</string>
+<string name="todo_content_hint">Treść zadania</string>
+<string name="todo_date_hint">Data realizacji (RRRR-MM-DD)</string>
+<string name="todo_content_required">Podaj treść zadania</string>
+<string name="todo_date_invalid">Podaj poprawną datę w formacie RRRR-MM-DD</string>
+<string name="todo_save">Zapisz</string>
+<string name="todo_cancel">Anuluj</string>
+<string name="todo_delete">Usuń</string>
+<string name="todo_delete_title">Usunąć zadanie?</string>
+<string name="todo_delete_message">Czy na pewno usunąć zadanie: %1$s?</string>
 ```
 
 ## 5. Przygotuj widok pojedynczego wiersza
@@ -85,13 +96,25 @@ Zastąp zawartość `app/src/main/res/layout/activity_main.xml`:
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.recyclerview.widget.RecyclerView
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/recyclerTodos"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:clipToPadding="false"
-    android:padding="8dp" />
+    android:orientation="vertical">
+
+    <Button
+        android:id="@+id/buttonAddTodo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/todo_add" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerTodos"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:clipToPadding="false"
+        android:padding="8dp" />
+</LinearLayout>
 ```
 
 ## 7. Utwórz adapter
@@ -110,7 +133,9 @@ import androidx.recyclerview.widget.RecyclerView
 import java.time.format.DateTimeFormatter
 
 class TodoAdapter(
-    private val todos: List<Todo>
+    private val todos: List<Todo>,
+    private val onEdit: (Int) -> Unit,
+    private val onDelete: (Int) -> Unit
 ) : RecyclerView.Adapter<TodoAdapter.TodoViewHolder>() {
 
     private val dateFormatter = DateTimeFormatter.ofPattern("dd.MM.yyyy")
@@ -140,6 +165,20 @@ class TodoAdapter(
         holder.checkDone.setOnCheckedChangeListener { _, isChecked ->
             todo.isDone = isChecked
         }
+
+        holder.itemView.setOnClickListener {
+            val currentPosition = holder.bindingAdapterPosition
+            if (currentPosition != RecyclerView.NO_POSITION) onEdit(currentPosition)
+        }
+        holder.itemView.setOnLongClickListener {
+            val currentPosition = holder.bindingAdapterPosition
+            if (currentPosition != RecyclerView.NO_POSITION) {
+                onDelete(currentPosition)
+                true
+            } else {
+                false
+            }
+        }
     }
 
     override fun getItemCount(): Int = todos.size
@@ -149,6 +188,7 @@ class TodoAdapter(
 - `onCreateViewHolder()` tworzy widok wiersza, gdy jest potrzebny.
 - `onBindViewHolder()` wypełnia wiersz danymi zadania. Wiersze są ponownie wykorzystywane podczas przewijania, dlatego za każdym razem ustawiamy wszystkie pola.
 - Przed ustawieniem checkboxa usuwamy poprzedni listener, aby programowe ustawienie stanu nie zmieniło wcześniej przypisanego zadania. Następnie listener aktualizuje aktualnie powiązany obiekt.
+- Kliknięcie wiersza wywołuje edycję, a długie przytrzymanie rozpoczyna usuwanie. `bindingAdapterPosition` sprawdza aktualną pozycję wiersza, która może się zmienić po usunięciu elementu.
 - `getItemCount()` zwraca liczbę elementów listy.
 
 ## 8. Podłącz dane w Activity
@@ -159,47 +199,120 @@ Zastąp zawartość `MainActivity.kt`:
 package com.example.todolist
 
 import android.os.Bundle
+import android.widget.Button
+import android.widget.EditText
+import android.widget.LinearLayout
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import java.time.LocalDate
+import java.time.format.DateTimeParseException
 
 class MainActivity : AppCompatActivity() {
+    private val todos = mutableListOf(
+        Todo(1, "Kupić mleko", false, LocalDate.of(2026, 12, 1)),
+        Todo(2, "Przygotować prezentację", true, LocalDate.of(2026, 12, 5)),
+        Todo(3, "Oddać książkę", false, LocalDate.of(2026, 12, 10))
+    )
+    private var nextId = 4
+    private lateinit var adapter: TodoAdapter
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val todos = mutableListOf(
-            Todo(1, "Kupić mleko", false, LocalDate.of(2026, 12, 1)),
-            Todo(2, "Przygotować prezentację", true, LocalDate.of(2026, 12, 5)),
-            Todo(3, "Oddać książkę", false, LocalDate.of(2026, 12, 10))
-        )
-
         val recyclerView = findViewById<RecyclerView>(R.id.recyclerTodos)
         recyclerView.layoutManager = LinearLayoutManager(this)
-        recyclerView.adapter = TodoAdapter(todos)
+        adapter = TodoAdapter(todos, ::editTodo, ::confirmDeleteTodo)
+        recyclerView.adapter = adapter
+
+        findViewById<Button>(R.id.buttonAddTodo).setOnClickListener {
+            showTodoDialog()
+        }
+    }
+
+    private fun editTodo(position: Int) {
+        showTodoDialog(position)
+    }
+
+    private fun showTodoDialog(position: Int? = null) {
+        val todo = position?.let { todos[it] }
+        val contentInput = EditText(this).apply {
+            setHint(R.string.todo_content_hint)
+            setSingleLine()
+            setText(todo?.content ?: "")
+        }
+        val dateInput = EditText(this).apply {
+            setHint(R.string.todo_date_hint)
+            setSingleLine()
+            setText((todo?.dateRealize ?: LocalDate.now()).toString())
+        }
+        val padding = (16 * resources.displayMetrics.density).toInt()
+        val fields = LinearLayout(this).apply {
+            orientation = LinearLayout.VERTICAL
+            setPadding(padding, 0, padding, 0)
+            addView(contentInput)
+            addView(dateInput)
+        }
+
+        val dialog = AlertDialog.Builder(this)
+            .setTitle(if (todo == null) R.string.todo_add else R.string.todo_edit)
+            .setView(fields)
+            .setPositiveButton(R.string.todo_save, null)
+            .setNegativeButton(R.string.todo_cancel, null)
+            .create()
+
+        dialog.setOnShowListener {
+            dialog.getButton(AlertDialog.BUTTON_POSITIVE).setOnClickListener {
+                val content = contentInput.text.toString().trim()
+                if (content.isEmpty()) {
+                    contentInput.error = getString(R.string.todo_content_required)
+                    return@setOnClickListener
+                }
+                val date = try {
+                    LocalDate.parse(dateInput.text.toString().trim())
+                } catch (exception: DateTimeParseException) {
+                    dateInput.error = getString(R.string.todo_date_invalid)
+                    return@setOnClickListener
+                }
+
+                if (todo == null) {
+                    todos.add(Todo(nextId++, content, false, date))
+                    adapter.notifyItemInserted(todos.lastIndex)
+                } else {
+                    val currentPosition = todos.indexOfFirst { it.id == todo.id }
+                    check(currentPosition != -1)
+                    todos[currentPosition] = todo.copy(content = content, dateRealize = date)
+                    adapter.notifyItemChanged(currentPosition)
+                }
+                dialog.dismiss()
+            }
+        }
+        dialog.show()
+    }
+
+    private fun confirmDeleteTodo(position: Int) {
+        val todo = todos[position]
+        AlertDialog.Builder(this)
+            .setTitle(R.string.todo_delete_title)
+            .setMessage(getString(R.string.todo_delete_message, todo.content))
+            .setPositiveButton(R.string.todo_delete) { _, _ ->
+                val currentPosition = todos.indexOfFirst { it.id == todo.id }
+                check(currentPosition != -1)
+                todos.removeAt(currentPosition)
+                adapter.notifyItemRemoved(currentPosition)
+            }
+            .setNegativeButton(R.string.todo_cancel, null)
+            .show()
     }
 }
 ```
 
-`LinearLayoutManager` układa zadania pionowo. Adapter łączy listę obiektów z widokami wierszy.
+`LinearLayoutManager` układa zadania pionowo. Adapter łączy listę obiektów z widokami wierszy. Formularz sprawdza, czy treść nie jest pusta i czy data ma format `RRRR-MM-DD`. Edycja zachowuje identyfikator i stan wykonania zadania. Po dodaniu, zmianie lub usunięciu elementu wywoływane jest odpowiednio `notifyItemInserted`, `notifyItemChanged` lub `notifyItemRemoved`. Operacje na liście i powiadomienia adaptera wykonujemy na głównym wątku.
 
 ## 9. Uruchom i sprawdź
 
-Uruchom aplikację na emulatorze lub urządzeniu z Androidem 8.0 (API 26) albo nowszym. Powinny pojawić się trzy zadania z datami i polami wyboru. Zaznacz zadanie; po przewinięciu poza ekran i powrocie jego stan powinien pozostać widoczny. Aby łatwiej sprawdzić przewijanie, dodaj więcej obiektów do listy, używając różnych `id`.
+Uruchom aplikację na emulatorze lub urządzeniu z Androidem 8.0 (API 26) albo nowszym. Powinny pojawić się trzy zadania z datami i polami wyboru. Dodaj zadanie przyciskiem, kliknij wiersz, aby zmienić jego treść lub datę, a następnie przytrzymaj wiersz, aby potwierdzić jego usunięcie. Sprawdź również, że pusta treść i niepoprawna data nie zostaną zapisane oraz że edycja zachowuje stan checkboxa. Zaznacz zadanie; po przewinięciu poza ekran i powrocie jego stan powinien pozostać widoczny.
 
 Stan w tym przykładzie istnieje tylko w pamięci: po odtworzeniu `Activity`, np. podczas obrotu ekranu, lista zostanie utworzona ponownie, a zmiany znikną. W rzeczywistej aplikacji przechowuj zadania np. w bazie Room i udostępniaj je przez `ViewModel`.
-
-## 10. Aktualizacja listy
-
-Jeśli później dodasz zadanie do istniejącej listy, poinformuj adapter o nowym wierszu. Przykładowo, w `onCreate()` zachowaj adapter w zmiennej i użyj jej również do przypisania go do `RecyclerView`:
-
-```kotlin
-val adapter = TodoAdapter(todos)
-recyclerView.adapter = adapter
-
-todos.add(Todo(4, "Wysłać wiadomość", false, LocalDate.of(2026, 12, 12)))
-adapter.notifyItemInserted(todos.lastIndex)
-```
-
-Ten fragment zastępuje wcześniejszą linię `recyclerView.adapter = TodoAdapter(todos)` i dodaje element od razu; w praktyce operacje te można wywołać w odpowiedzi na działanie użytkownika. Jeśli zmieniasz dane zadania poza adapterem, powiadom go o odpowiednim wierszu przez `notifyItemChanged(index)`. Zmiany listy i powiadomienia wykonuj na głównym wątku.
