@@ -32,10 +32,15 @@ class MainActivity : AppCompatActivity() {
                 resultTV.text = "Nieprawidłowy adres e-mail";
                 return@setOnClickListener;
             }
+
             if (pass1Edit.text.toString()
                 != pass2Edit.text.toString()
             ) {
                 resultTV.text = "Hasła się różnią";
+                return@setOnClickListener;
+            }
+            if(pass1Edit.text.toString().trim().length < 3) {
+                resultTV.text = "Hasło musi mieć co najmniej 3 znaki";
                 return@setOnClickListener;
             }
             resultTV.text = "Witaj ${emailEdit.text}"
