@@ -1,0 +1,39 @@
+﻿@model List<string>
+<h2>Formularz z Post bez modelu</h2>
+
+
+<form asp-action="Form2" method="post">
+    <div class="row">
+        <label for="firstname">Imię</label>
+        <input type="text" name="firstname" id="firstname">
+    </div>
+    <div class="row">
+        <label for="lastname">Nazwisko</label>
+        <input type="text" name="lastname" id="lastname">
+    </div>
+    <div class="row">
+        <label for="birthDate">Data urodzenia</label>
+        <input type="date" name="birthDate" id="birthDate">
+    </div>
+       <div class="row">
+        <label for="division">Wybierz klasę</label>
+        <select name="division" id="division">
+            @foreach(string d in Model)
+                {
+                    <option value="@d">@d</option>
+                }
+            </select>
+    </div>
+    <button type="submit">Zapisz</button>
+</form>
+<hr>
+    @if (ViewBag.Student != null)
+{
+    <div class="result">
+        <h5>Dane do zapisanie</h5>
+        <p>Imię: @ViewBag.Student.Firstname</p>
+        <p>Nazwisko: @ViewBag.Student.Lastname</p>
+        <p>Data: @ViewBag.Student.BirthDate</p>
+        <p>Klasa: @ViewBag.Student.Division</p>
+    </div>
+}

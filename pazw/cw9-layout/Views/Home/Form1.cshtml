@@ -25,3 +25,14 @@
     </div>
     <button type="submit">Zapisz</button>
 </form>
+<hr>
+    @if (ViewBag.Student != null)
+{
+    <div class="result">
+        <h5>Dane do zapisanie</h5>
+        <p>Imię: @ViewBag.Student.Firstname</p>
+        <p>Nazwisko: @ViewBag.Student.Lastname</p>
+        <p>Data: @ViewBag.Student.BirthDate</p>
+        <p>Klasa: @ViewBag.Student.Division</p>
+    </div>
+}
