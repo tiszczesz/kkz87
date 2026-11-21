@@ -1,0 +1,47 @@
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 30px;
+  margin: 0;
+}
+header {
+  background-color: bisque;
+}
+
+nav a {
+  text-decoration: none;
+  color: brown;
+  padding: 10px;
+}
+nav a:hover {
+  text-decoration: underline;
+  color: rgb(56, 14, 14);
+}
+body {
+  margin: 0;
+}
+footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  border-top: solid 1px brown;
+  padding: 10px;
+  text-align: center;
+}
+.row {
+  margin-top: 20px;
+}
+.row input {
+  width: 150px;
+}
+label {
+  display: inline-block;
+  width: 120px;
+  text-align: right;
+}
+button {
+  margin-top: 20px;
+  margin-left: 130px;
+  width: 150px;
+  padding: 5px;
+}

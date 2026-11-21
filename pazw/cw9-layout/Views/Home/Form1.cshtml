@@ -1,0 +1,27 @@
+﻿@model List<string>
+<h2>Formularz bez modelu jak w php</h2>
+
+<form asp-action="Form1" method="get">
+    <div class="row">
+        <label for="firstname">Imię</label>
+        <input type="text" name="firstname" id="firstname">
+    </div>
+    <div class="row">
+        <label for="lastname">Nazwisko</label>
+        <input type="text" name="lastname" id="lastname">
+    </div>
+    <div class="row">
+        <label for="birthDate">Data urodzenia</label>
+        <input type="date" name="birthDate" id="birthDate">
+    </div>
+       <div class="row">
+        <label for="division">Wybierz klasę</label>
+        <select name="division" id="division">
+            @foreach(string d in Model)
+                {
+                    <option value="@d">@d</option>
+                }
+            </select>
+    </div>
+    <button type="submit">Zapisz</button>
+</form>
