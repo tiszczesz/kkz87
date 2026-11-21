@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".MainActivity" >
+    tools:context=".MainActivity">
 
     <TextView
         android:id="@+id/textView"
@@ -23,57 +23,64 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Podaj Email:"
-        android:textSize="16sp" />
+        android:textSize="@dimen/label_size" />
 
     <EditText
         android:id="@+id/etEmail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:hint="email"
         android:ems="10"
-        android:inputType="textEmailAddress" />
+        android:inputType="textEmailAddress"
+        android:textSize="@dimen/edit_size_text" />
 
     <TextView
         android:id="@+id/textView3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Podaj hasło:"
-        android:textSize="16sp" />
+        android:textSize="@dimen/label_size" />
 
     <EditText
         android:id="@+id/etPassword1"
         android:layout_width="match_parent"
+
         android:layout_height="wrap_content"
         android:ems="10"
-        android:inputType="textPassword" />
+        android:inputType="textPassword"
+        android:textSize="@dimen/edit_size_text" />
 
     <TextView
         android:id="@+id/textView4"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Powtórz hasło:"
-        android:textSize="16sp" />
+        android:textSize="@dimen/label_size" />
 
     <EditText
         android:id="@+id/etPassword2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:inputType="textPassword" />
+        android:inputType="textPassword"
+        android:textSize="@dimen/edit_size_text" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/btnAccept"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:backgroundTint="#A9A5A5"
         android:text="ZATWIERDŹ"
+        android:textAlignment="gravity"
         android:textSize="20sp"
         app:cornerRadius="0dp" />
 
     <TextView
-        android:id="@+id/textView5"
+        android:id="@+id/tvResult"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:text="Autor: XXXXXXXX" />
+        android:text="Autor: XXXXXXXX"
+        android:textSize="16sp" />
 </LinearLayout>
