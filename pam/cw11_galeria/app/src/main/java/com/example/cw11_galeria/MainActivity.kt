@@ -33,9 +33,25 @@ class MainActivity : AppCompatActivity() {
         val imageView = findViewById<ImageView>(R.id.image)
         imageView.setImageResource(images[currentIndex])
         val btnRandom = findViewById<Button>(R.id.btnRandom)
+
         btnRandom.setOnClickListener {
             currentIndex = (0..<images.count()).random()
             imageView.setImageResource(images[currentIndex])
+        }
+        val btndown = findViewById<Button>(R.id.down)
+        val btnup = findViewById<Button>(R.id.up)
+        btnup.setOnClickListener {
+            currentIndex = (currentIndex + 1) % images.size
+            imageView.setImageResource(images[currentIndex])
+        }
+        btndown.setOnClickListener {
+            if (currentIndex > 0) {
+                currentIndex--
+                imageView.setImageResource(images[currentIndex])
+            }else{
+                currentIndex = images.size - 1
+                imageView.setImageResource(images[currentIndex])
+            }
         }
     }
 }
