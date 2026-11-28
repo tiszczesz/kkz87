@@ -49,7 +49,8 @@ namespace cw3_galeria
         {
             Random rand = new Random();
             List<Models.Image> images = _repo.GetImages();
-            var randomImage = images[rand.Next(images.Count)];
+            _currentIndex = rand.Next(images.Count);
+            var randomImage = images[_currentIndex];
             LoadSource(randomImage);
         }
 
