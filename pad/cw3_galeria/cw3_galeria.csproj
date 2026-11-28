@@ -8,21 +8,7 @@
     <UseWPF>true</UseWPF>
   </PropertyGroup>
 
-  <ItemGroup>
-    <None Remove="Images\gta-6-rooftop-5120x2160-27829.jpg" />
-    <None Remove="Images\obraz1.jpg" />
-    <None Remove="Images\obraz10.jpg" />
-    <None Remove="Images\obraz11.jpg" />
-    <None Remove="Images\obraz12.jpg" />
-    <None Remove="Images\obraz2.jpg" />
-    <None Remove="Images\obraz3.jpg" />
-    <None Remove="Images\obraz4.jpg" />
-    <None Remove="Images\obraz5.jpg" />
-    <None Remove="Images\obraz6.jpg" />
-    <None Remove="Images\obraz7.jpg" />
-    <None Remove="Images\obraz8.jpg" />
-    <None Remove="Images\obraz9.jpg" />
-  </ItemGroup>
+
 
   <ItemGroup>
     <Resource Include="Images\gta-6-rooftop-5120x2160-27829.jpg" />
