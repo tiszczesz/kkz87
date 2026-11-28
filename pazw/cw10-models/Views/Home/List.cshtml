@@ -1,0 +1,28 @@
+﻿@model List<Student>
+
+<h2>Lista studentów</h2>
+<section class="container">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Lp</th>
+                <th>Imię</th>
+                <th>Nazwisko</th>
+                <th>Wiek</th>
+            </tr>
+        </thead>
+        <tbody>
+            @{ int lp = 0;}
+            @foreach(Student s in Model)
+            {
+                lp++;
+                <tr>
+                    <td>@lp</td>
+                    <td>@s.Firstname</td>
+                    <td>@s.Lastname</td>
+                    <td>@s.Age</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</section>
