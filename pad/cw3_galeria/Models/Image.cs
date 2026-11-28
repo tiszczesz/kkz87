@@ -6,6 +6,10 @@ namespace cw3_galeria.Models
 {
     public class Image
     {
-        I
+        public int id { get; set; }
+        public string filename { get; set; }
+        public string  alt { get; set; }
+        public int category { get; set; }
+        public int downloads { get; set; }
     }
 }

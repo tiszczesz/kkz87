@@ -10,9 +10,36 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
 
         <Label  VerticalAlignment="Top" Padding="10"
+                Grid.Row="0"
+                Background="Beige"
+                Foreground="#514567"
+                FontWeight="Bold"
                FontSize="20"
                HorizontalContentAlignment="Center">Galeria zdjęć</Label>
+        <Image x:Name="ImageControl" Grid.Row="1" 
+               Grid.Column="0" Stretch="Uniform" Margin="10"/>
+        <Button
+            FontSize="16" FontWeight="Bold"
+            x:Name="btnRandom" Grid.Row="2" Grid.Column="0" 
+                Padding="10" Click="GetRandomImage">Wylosuj obrazek</Button>
+        <Grid Grid.Row="3" Grid.Column="0" VerticalAlignment="Top">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Button FontSize="16" FontWeight="Bold"
+                x:Name="btnPrev" Grid.Column="0" Padding="10" Click="Btn_Prev">&lt;&lt;</Button>
+            <Button
+                FontSize="16" FontWeight="Bold"
+                x:Name="btnNext" Grid.Column="1" Padding="10" Click="BtnNext">&gt;&gt;</Button>
+        </Grid>
     </Grid>
 </Window>
