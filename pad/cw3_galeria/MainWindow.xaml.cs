@@ -71,5 +71,11 @@ namespace cw3_galeria
             _currentIndex = (_currentIndex + 1) % images.Count;
             LoadSource(images[_currentIndex]);
         }
+
+        private void BtnNewWindow(object sender, RoutedEventArgs e)
+        {
+            new WindoeGallery().Show();
+
+        }
     }
 }

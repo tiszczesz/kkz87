@@ -14,7 +14,8 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
-            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
         <Label  VerticalAlignment="Top" Padding="10"
@@ -41,5 +42,6 @@
                 FontSize="16" FontWeight="Bold"
                 x:Name="btnNext" Grid.Column="1" Padding="10" Click="BtnNext">&gt;&gt;</Button>
         </Grid>
+        <Button Grid.Row="4" Grid.Column="0" Padding="10" Click="BtnNewWindow">Nowe okno</Button>
     </Grid>
 </Window>
