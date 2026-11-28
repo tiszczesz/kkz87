@@ -8,15 +8,15 @@ namespace cw3_galeria.Models
 {
     public class ImagesRepo
     {
-        private List<Image>? images;
+        private List<MyImage>? images;
         public ImagesRepo(string filename)
         {
             string jsonString = File.ReadAllText(filename);
-            images = JsonSerializer.Deserialize<List<Image>>(jsonString);
+            images = JsonSerializer.Deserialize<List<MyImage>>(jsonString);
         }
-        public List<Image> GetImages()
+        public List<MyImage> GetImages()
         {
-            return images?? new List<Image>();
+            return images?? new List<MyImage>();
         }
     }
 }

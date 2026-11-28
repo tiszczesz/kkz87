@@ -4,7 +4,7 @@ using System.Text;
 
 namespace cw3_galeria.Models
 {
-    public class Image
+    public class MyImage
     {
         public int id { get; set; }
         public string filename { get; set; }

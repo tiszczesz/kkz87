@@ -24,10 +24,10 @@ namespace cw3_galeria
         {
             InitializeComponent();
             _repo = new ImagesRepo("images.json");
-            List<Models.Image> images = _repo.GetImages();
+            List<Models.MyImage> images = _repo.GetImages();
             LoadSource(images[0]);
         }
-        private void LoadSource(Models.Image image)
+        private void LoadSource(Models.MyImage image)
         {
             string pathRel = System.IO.Path.Combine("Images", image.filename);
             //string path = System.IO.Path.Combine(
@@ -48,7 +48,7 @@ namespace cw3_galeria
         private void GetRandomImage(object sender, RoutedEventArgs e)
         {
             Random rand = new Random();
-            List<Models.Image> images = _repo.GetImages();
+            List<Models.MyImage> images = _repo.GetImages();
             _currentIndex = rand.Next(images.Count);
             var randomImage = images[_currentIndex];
             LoadSource(randomImage);
@@ -56,7 +56,7 @@ namespace cw3_galeria
 
         private void Btn_Prev(object sender, RoutedEventArgs e)
         {
-            List<Models.Image> images = _repo.GetImages();
+            List<Models.MyImage> images = _repo.GetImages();
             if (images.Count == 0) { 
                 _currentIndex = images.Count - 1; 
             } else { 
@@ -67,15 +67,14 @@ namespace cw3_galeria
 
         private void BtnNext(object sender, RoutedEventArgs e)
         {
-            List<Models.Image> images = _repo.GetImages();
+            List<Models.MyImage> images = _repo.GetImages();
             _currentIndex = (_currentIndex + 1) % images.Count;
             LoadSource(images[_currentIndex]);
         }
 
         private void BtnNewWindow(object sender, RoutedEventArgs e)
         {
-            new WindoeGallery().Show();
-
+            new WindowGallery(_repo).ShowDialog();  
         }
     }
 }
